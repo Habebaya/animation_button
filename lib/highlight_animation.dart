@@ -5,11 +5,17 @@ class HighlightAnimation extends StatefulWidget {
   final Color startColor;
   final Color endColor;
   final Duration duration;
+  final double animationBorderRadius;
+  final double blurRadius;
+  final double spreadRadius;
 
   const HighlightAnimation({
     Key? key,
     required this.child,
     this.startColor = Colors.white,
+    this.animationBorderRadius = 50,
+    this.blurRadius = 10,
+    this.spreadRadius = 5,
     this.endColor = const Color(0xFFE0E5B6),
     this.duration = const Duration(seconds: 1),
   }) : super(key: key);
@@ -45,7 +51,7 @@ class _HighlightAnimationState extends State<HighlightAnimation>
         return Container(
           decoration: BoxDecoration(
             color: _colorAnimation.value,
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(widget.animationBorderRadius),
             boxShadow: [
               BoxShadow(
                 color: _colorAnimation.value!,

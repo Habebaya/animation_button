@@ -1,38 +1,81 @@
 library animation_button;
 
-
-import 'package:animation_button/flash_animation.dart';
-import 'package:animation_button/pulse_animation.dart';
 import 'package:flutter/material.dart';
 
-import 'highlight_animation.dart';
-
 /// A customizable animated button widget.
+
 class AnimationButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final String text;
+  final TextStyle textStyle;
   final Color initialColor;
   final Color finalColor;
+  final Color iconColor;
   final double initialWidth;
-  final double finalWidth;
+  final double initialHeight;
   final Duration duration;
+  final Duration highlightDuration;
+  final double buttonBorderRadius;
 
-   AnimationButton({
-    Key? key,
-    required this.text,
-    this.onPressed,
-    this.initialColor = const Color(0xFFCCD5AE),
-    this.finalColor = Colors.green,
-    this.initialWidth = 200,
-    this.finalWidth = 300,
-    this.duration = const Duration(milliseconds: 300),
-  }) : super(key: key);
+  final Widget child;
+  final Color startColor;
+  final Color endColor;
+  final double animationBorderRadius;
+  final double blurRadius;
+  final double spreadRadius;
+  final bool isButton;
+
+  AnimationButton(
+      {Key? key,
+      required this.text,
+      this.onPressed,
+      this.buttonBorderRadius = 50.0,
+      this.initialColor = const Color(0xFFCCD5AE),
+      this.finalColor = Colors.green,
+      this.iconColor = const Color(0xFF664343),
+      this.initialWidth = 250,
+      this.initialHeight = 50,
+      this.textStyle = const TextStyle(
+        color: Color(0xFF664343),
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+
+      // Animation parameters
+      this.duration = const Duration(milliseconds: 300),
+      this.child = const SizedBox.shrink(),
+      this.startColor = Colors.white,
+      this.animationBorderRadius = 50,
+      this.blurRadius = 10,
+      this.spreadRadius = 5,
+      this.endColor = const Color(0xFFE0E5B6),
+      this.highlightDuration = const Duration(seconds: 1),
+      this.isButton = true})
+      : super(key: key);
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();
 }
 
-class _AnimatedButtonState extends State<AnimationButton> {
+class _AnimatedButtonState extends State<AnimationButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _colorAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: widget.highlightDuration,
+      vsync: this,
+    )..repeat(reverse: true); // Loops the animation back and forth.
+
+    _colorAnimation = ColorTween(
+      begin: widget.startColor,
+      end: widget.endColor,
+    ).animate(_controller);
+  }
+
   bool _isPressed = false;
 
   @override
@@ -44,36 +87,60 @@ class _AnimatedButtonState extends State<AnimationButton> {
         });
         if (widget.onPressed != null) widget.onPressed!();
       },
-      child: HighlightAnimation(
-        duration: const Duration(seconds: 1), // Set the animation speed.
-        child: AnimatedContainer(
-          duration: widget.duration,
-          width: _isPressed ? widget.finalWidth : widget.initialWidth,
-          height: 60,
-          decoration: BoxDecoration(
-            color: _isPressed ? widget.finalColor : widget.initialColor,
-            borderRadius: BorderRadius.circular(_isPressed ? 30 : 50),
-
-          ),
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(Icons.notifications_outlined,color: Color(0xFF664343),size: 25,),
-              SizedBox(width: 10,),
-              Text(
-                widget.text,
-                style: const TextStyle(
-                  color: Color(0xFF664343),
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+      child: AnimatedBuilder(
+        animation: _colorAnimation,
+        builder: (context, child) {
+          return Container(
+              decoration: BoxDecoration(
+                color: _colorAnimation.value,
+                borderRadius:
+                    BorderRadius.circular(widget.animationBorderRadius),
+                boxShadow: [
+                  BoxShadow(
+                    color: _colorAnimation.value!,
+                    blurRadius: 10,
+                    spreadRadius: 5,
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+              child: widget.isButton
+                  ? AnimatedContainer(
+                      duration: widget.duration,
+                      width: widget.initialWidth,
+                      height: widget.initialHeight,
+                      decoration: BoxDecoration(
+                        color: _isPressed
+                            ? widget.finalColor
+                            : widget.initialColor,
+                        borderRadius:
+                            BorderRadius.circular(widget.buttonBorderRadius),
+                      ),
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.notifications_outlined,
+                            color: widget.iconColor,
+                            size: 25,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Text(widget.text, style: widget.textStyle),
+                        ],
+                      ),
+                    )
+                  : widget.child);
+        },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

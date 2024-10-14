@@ -1,7 +1,8 @@
 name: animation_button
-description: "A new Flutter project."
+description: "custom animation button"
 version: 0.0.1
-homepage:
+author: Habeba Yasser <habebayasser13@gmail.com>
+homepage: https://github.com/Habebaya/animation_button.git
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
