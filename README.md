@@ -12,9 +12,11 @@ in your **pubspec.yaml** file.
 
 **Platform Support** 
 
-|  Android  |   IOS   |   Web   | MacOS  |  Linux  | Windows |
-|:---------:|:-------:|:-------:|:------:|:-------:|:-------:|
-|     ✅    |   ✅    |    ✅   |   ✅   |    ✅  |    ✅   |
+|  Android  |   IOS   |   Web   | MacOS  |  Linux  | Windows 
+|:---------:|:-------:|:-------:|:------:|:-------:|:-------:
+|     ✅    |   ✅    |    ✅   |   ✅   |    ✅  |    ✅   
+
+
 
    
 
