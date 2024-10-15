@@ -20,7 +20,7 @@ in your **pubspec.yaml** file.
 | Android | IOS | Web | MacOS | Linux | Windows |
 |:-------:|:---:|:---:|:-----:|:-----:|:-------:|
 
-|     ✅    |  ✅ |  ✅ |   ✅  |   ✅  |       |
+|     ✅    
 ## **Parameters and their Description**
 
 | Datatype |      Parameter       | Required  |      Default Value       |                                Description                                |
