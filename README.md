@@ -1,5 +1,6 @@
 # Animations button
-dart flutter pub package
+https://img.shields.io/badge/build-passing-green
+
 
 The button_animations is a package to make highly customizable Flutter widgets 
 with highlight animations in background .
@@ -9,6 +10,5 @@ To use this plugin, add the latest version of **animation_button:** as a depende
 in your **pubspec.yaml** file.
 
 # Platform Support
-`build-passing-brightgreen`
 Android	
 iOS	Web	MacOS	Linux	Windows   ✅    ✅	✅	✅	✅  	✅
