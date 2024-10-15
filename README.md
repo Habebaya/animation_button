@@ -10,10 +10,11 @@ with highlight animations in background .
 To use this plugin, add the latest version of **animation_button:** as a dependency
 in your **pubspec.yaml** file.
 
-**Platform Support**
-| Android | IOS | Web | MacOS | Linux | Windows |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
- ✅    ✅	✅	✅	✅  	✅
+**Platform Support** 
+
+|  Android  |   IOS   |   Web   | MacOS  |  Linux  | Windows |
+|:---------:|:-------:|:-------:|:------:|:-------:|:-------:|
+|     ✅    |   ✅    |    ✅   |   ✅   |    ✅  |    ✅   |
+
+   
 
