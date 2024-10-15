@@ -11,17 +11,32 @@ To use this plugin, add the latest version of **animation_button:** as a depende
 in your **pubspec.yaml** file.
 
 **Platform Support** 
+                
+| Android | IOS | Web | MacOS | Linux | Windows |   
+|---------|-----|-----|-------|-------|---------|
+| ✅       | ✅   |     |       |       |         |
 
-|  Android  |   IOS   |   Web   | MacOS  |  Linux  | Windows |
-|:---------:|:-------:|:-------:|:------:|:-------:|:-------:|
-|     ✅    |   ✅    |    ✅   |   ✅   |    ✅  |    ✅   |
 
+| Android | IOS | Web | MacOS | Linux | Windows |
+|:-------:|:---:|:---:|:-----:|:-----:|:-------:|
 
+|     ✅    |  ✅ |  ✅ |   ✅  |   ✅  |    ✅    |
 ## **Parameters and their Description**
 
-| Datatype | Parameter |                            Description                            |  Default Value  | Required  |
-|:--------:|:---------:|:--------------------------------------------------------:|:---------------:|:---------:|
-| function | onPressed | the function that<br/> <br/>is called whenever the widget is onPressed |        ✅        |     ✅     |    ✅   |
+| Datatype |      Parameter       | Required  |      Default Value       |                                Description                                |
+|:--------:|:--------------------:|:---------:|:------------------------:|:-------------------------------------------------------------------------:|
+| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+|  String  |        title         |    Yes    |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+|  double  |  buttonBorderRadius  |    No     |           50.0           |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+|  Color   |     initialColor     |    No     |    Color(0xFFCCD5AE)     |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+|  Color   |      iconColor       |    No     |    Color(0xFF664343)     |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+
+
 
 
 
