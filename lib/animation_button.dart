@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 /// A customizable animated button widget.
 
 class AnimationButton extends StatefulWidget {
+
   final VoidCallback? onPressed;
-  final String text;
+  final String title;
   final TextStyle textStyle;
-  final Color initialColor;
-  final Color finalColor;
-  final Color iconColor;
+  final Color buttonBackgroundColor;
   final double initialWidth;
   final double initialHeight;
-  final Duration duration;
+  final Duration animatedContainerDuration;
   final Duration highlightDuration;
   final double buttonBorderRadius;
+  final Widget? iconNextTitle;
 
   final Widget child;
   final Color startColor;
@@ -23,35 +23,31 @@ class AnimationButton extends StatefulWidget {
   final double animationBorderRadius;
   final double blurRadius;
   final double spreadRadius;
-  final bool isButton;
 
-  AnimationButton(
-      {Key? key,
-      required this.text,
-      this.onPressed,
-      this.buttonBorderRadius = 50.0,
-      this.initialColor = const Color(0xFFCCD5AE),
-      this.finalColor = Colors.green,
-      this.iconColor = const Color(0xFF664343),
-      this.initialWidth = 250,
-      this.initialHeight = 50,
-      this.textStyle = const TextStyle(
-        color: Color(0xFF664343),
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
+  AnimationButton({
+    Key? key,
+    required this.title,
+    required this.onPressed,
+    this.buttonBorderRadius = 50.0,
+    this.buttonBackgroundColor = const Color(0xFFCCD5AE),
+    this.iconNextTitle,
+    this.initialWidth = 250,
+    this.initialHeight = 50,
+    this.textStyle = const TextStyle(
+      color: Color(0xFF664343),
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
 
-      // Animation parameters
-      this.duration = const Duration(milliseconds: 300),
-      this.child = const SizedBox.shrink(),
-      this.startColor = Colors.white,
-      this.animationBorderRadius = 50,
-      this.blurRadius = 10,
-      this.spreadRadius = 5,
-      this.endColor = const Color(0xFFE0E5B6),
-      this.highlightDuration = const Duration(seconds: 1),
-      this.isButton = true})
-      : super(key: key);
+    required this.animatedContainerDuration,
+    this.child = const SizedBox.shrink(),
+    this.startColor = Colors.white,
+    this.animationBorderRadius = 50,
+    this.blurRadius = 10,
+    this.spreadRadius = 5,
+    this.endColor = const Color(0xFFE0E5B6),
+    this.highlightDuration = const Duration(seconds: 1),
+  }) : super(key: key);
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();
@@ -76,63 +72,44 @@ class _AnimatedButtonState extends State<AnimationButton>
     ).animate(_controller);
   }
 
-  bool _isPressed = false;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _isPressed = !_isPressed;
-        });
-        if (widget.onPressed != null) widget.onPressed!();
+        widget.onPressed!();
       },
       child: AnimatedBuilder(
         animation: _colorAnimation,
         builder: (context, child) {
-          return Container(
-              decoration: BoxDecoration(
-                color: _colorAnimation.value,
-                borderRadius:
-                    BorderRadius.circular(widget.animationBorderRadius),
-                boxShadow: [
-                  BoxShadow(
-                    color: _colorAnimation.value!,
-                    blurRadius: 10,
-                    spreadRadius: 5,
-                  ),
-                ],
-              ),
-              child: widget.isButton
-                  ? AnimatedContainer(
-                      duration: widget.duration,
-                      width: widget.initialWidth,
-                      height: widget.initialHeight,
-                      decoration: BoxDecoration(
-                        color: _isPressed
-                            ? widget.finalColor
-                            : widget.initialColor,
-                        borderRadius:
-                            BorderRadius.circular(widget.buttonBorderRadius),
+          return AnimatedContainer(
+            duration: widget.animatedContainerDuration,
+            width: widget.initialWidth,
+            height: widget.initialHeight,
+            decoration: BoxDecoration(
+              color: widget.buttonBackgroundColor,
+              borderRadius: BorderRadius.circular(widget.buttonBorderRadius),
+              boxShadow: [
+                BoxShadow(
+                  color: _colorAnimation.value!,
+                  blurRadius: widget.blurRadius,
+                  spreadRadius: widget.spreadRadius,
+                ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                widget.iconNextTitle == null
+                    ? const SizedBox.shrink()
+                    : const SizedBox(
+                        width: 20,
                       ),
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.notifications_outlined,
-                            color: widget.iconColor,
-                            size: 25,
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Text(widget.text, style: widget.textStyle),
-                        ],
-                      ),
-                    )
-                  : widget.child);
+                Text(widget.title, style: widget.textStyle),
+              ],
+            ),
+          );
         },
       ),
     );

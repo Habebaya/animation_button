@@ -11,34 +11,38 @@ To use this plugin, add the latest version of **animation_button:** as a depende
 in your **pubspec.yaml** file.
 
 **Platform Support** 
-                
-| Android | IOS | Web | MacOS | Linux | Windows |   
-|---------|-----|-----|-------|-------|---------|
-| ✅       | ✅   |     |       |       |         |
 
 
-| Android | IOS | Web | MacOS | Linux | Windows |
-|:-------:|:---:|:---:|:-----:|:-----:|:-------:|
+# Platform Support
 
-|     ✅    
-## **Parameters and their Description**
+This Flutter package supports the following platforms:
 
-| Datatype |      Parameter       | Required  |      Default Value       |                                Description                                |
-|:--------:|:--------------------:|:---------:|:------------------------:|:-------------------------------------------------------------------------:|
-| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-|  String  |        title         |    Yes    |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-|  double  |  buttonBorderRadius  |    No     |           50.0           |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-|  Color   |     initialColor     |    No     |    Color(0xFFCCD5AE)     |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-|  Color   |      iconColor       |    No     |    Color(0xFF664343)     |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
-| function |      onPressed       |    No     |            --            |  The function that is <br/> called whenever<br/> the widget is OnPressed  |
+| Platform            | Support Status | Notes                           |
+|---------------------|:---------------|:--------------------------------|
+| Android             | ✅ Supported    | Compatible with Android 4.1+    |
+| iOS                 | ✅ Supported    | Requires iOS 9.0 or later       |
+| Web                 | ✅ Supported    | Fully functional on web         |
+| macOS               | ✅ Supported    | Requires macOS 10.11 or later   |
+| Windows             | ✅ Supported    | Requires Windows 10 or later    |
+| Linux               | ✅ Supported    | Requires GTK 3.10 or later      |
+
+
+### Support Status
+- ✅ Supported: The platform is fully supported and tested.
 
 
 
+    
+## ** Button Parameters and their Description**
 
-
-   
+| Datatype |               Parameter               | Required |   Default Value   |                               Description                               |
+|:--------:|:-------------------------------------:|:--------:|:-----------------:|:-----------------------------------------------------------------------:|
+| function |               onPressed               |   Yes    |        --         | The function that is <br/> called whenever<br/> the widget is OnPressed |
+|  String  |                 title                 |   Yes    |        --         |                             Title of Button                             |
+|  double  |          buttonBorderRadius           |    No    |       50.0        |                 The radius of the borders of the button                 |
+|  Color   |         buttonBackgroundColor         |    No    | Color(0xFFCCD5AE) |                   The background color of the button                    |
+|  Widget  |             iconNextTitle             |    No    | SizedBox.shrink() |                    widget added beside button title                     |
+|  double  |             initialWidth              |    No    |       250.0       |                         The width of the button                         |
+|  double  |             initialHeight             |    No    |       50.0        |                        The height of the button                         |
+| Duration |       animatedContainerDuration       |   Yes    | milliseconds: 300 |                   The Duration Of Animated Container                    | 
 

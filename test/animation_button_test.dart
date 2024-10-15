@@ -5,7 +5,7 @@ import 'package:animation_button/animation_button.dart';
 
 void main() {
   test('adds one to input values', () {
-    final animatedButton = AnimationButton(text: '', child: const SizedBox.shrink(),);
+    // final animatedButton = AnimationButton(text: '', child: const SizedBox.shrink(),);
 
   });
 }

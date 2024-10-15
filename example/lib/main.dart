@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      showSemanticsDebugger: false,
       title: 'Flutter Demo for Animated Button',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo H'),
+      home: const MyHomePage(title: 'Flutter Demo '),
     );
   }
 }
@@ -36,7 +37,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
           child: AnimationButton(
-        text: 'Subscribe now',
+        animatedContainerDuration: const Duration(milliseconds: 300),
+        onPressed: () {
+          debugPrint('AppBarTitle ${widget.title}');
+        },
+        title: 'Subscribe now',
       )),
     );
   }
