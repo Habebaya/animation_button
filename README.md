@@ -33,7 +33,7 @@ This Flutter package supports the following platforms:
 
 
     
-## ** Button Parameters and their Description**
+## Button Parameters and their Description
 
 | Datatype |               Parameter               | Required |   Default Value   |                               Description                               |
 |:--------:|:-------------------------------------:|:--------:|:-----------------:|:-----------------------------------------------------------------------:|
