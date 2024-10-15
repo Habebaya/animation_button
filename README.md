@@ -12,9 +12,16 @@ in your **pubspec.yaml** file.
 
 **Platform Support** 
 
-|  Android  |   IOS   |   Web   | MacOS  |  Linux  | Windows 
-|:---------:|:-------:|:-------:|:------:|:-------:|:-------:
-|     ✅    |   ✅    |    ✅   |   ✅   |    ✅  |    ✅   
+|  Android  |   IOS   |   Web   | MacOS  |  Linux  | Windows |
+|:---------:|:-------:|:-------:|:------:|:-------:|:-------:|
+|     ✅    |   ✅    |    ✅   |   ✅   |    ✅  |    ✅   |
+
+
+## **Parameters and their Description**
+
+| Datatype | Parameter |                            Description                            |  Default Value  | Required  |
+|:--------:|:---------:|:--------------------------------------------------------:|:---------------:|:---------:|
+| function | onPressed | the function that<br/> <br/>is called whenever the widget is onPressed |        ✅        |     ✅     |    ✅   |
 
 
 
